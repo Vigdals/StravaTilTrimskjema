@@ -115,9 +115,9 @@
     <FlowStep x:Name="__ReferenceID12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">130,306.4</av:Point>
+          <av:Point x:Key="ShapeLocation">130,316.4</av:Point>
           <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">230,359.2 230,389.2 325.841666666667,389.2 325.841666666667,399.2</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">230,369.2 230,399.2 325.841666666667,399.2 325.841666666667,409.2</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[int_counterWord &lt; 16]" DisplayName="Iterate through strava activities" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_4">
@@ -167,15 +167,15 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                       </ActivityAction.Argument>
-                      <Sequence sap:VirtualizedContainerService.HintSize="478.4,1416" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                      <Sequence sap:VirtualizedContainerService.HintSize="478.4,1416.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus 'pane'" sap:VirtualizedContainerService.HintSize="436.8,107.2" sap2010:WorkflowViewState.IdRef="SetFocus_1">
+                        <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" ContinueOnError="True" DisplayName="Set Focus 'pane'" sap:VirtualizedContainerService.HintSize="436.8,107.2" sap2010:WorkflowViewState.IdRef="SetFocus_1">
                           <ui:SetFocus.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e185e7bc-926d-45e9-a15e-9f587268106e" InformativeScreenshot="af348eb1f988a1d4c9e530eaef33e9ff" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='My Activities | Strava - Google Chrome' /&gt;&lt;ctrl name='My Activities | Strava - Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl role='pane' /&gt;">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e185e7bc-926d-45e9-a15e-9f587268106e" InformativeScreenshot="af348eb1f988a1d4c9e530eaef33e9ff" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*Google Chrome' /&gt;&lt;ctrl role='pane' idx='*' /&gt;">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
@@ -635,11 +635,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <av:Point x:Key="ShapeLocation">290.641666666667,399.2</av:Point>
+              <av:Point x:Key="ShapeLocation">290.641666666667,409.2</av:Point>
               <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
-              <av:PointCollection x:Key="FalseConnector">361.041666666667,442.8 460,442.8 460,344.4</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">361.041666666667,452.8 460,452.8 460,344.4</av:PointCollection>
               <x:String x:Key="TrueLabel">2021</x:String>
-              <av:PointCollection x:Key="TrueConnector">290.641666666667,442.8 180,442.8 180,483.6</av:PointCollection>
+              <av:PointCollection x:Key="TrueConnector">290.641666666667,452.8 180,452.8 180,493.6</av:PointCollection>
               <x:String x:Key="FalseLabel">2022</x:String>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -647,7 +647,7 @@
             <FlowStep x:Name="__ReferenceID15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">80,483.6</av:Point>
+                  <av:Point x:Key="ShapeLocation">80,493.6</av:Point>
                   <av:Size x:Key="ShapeSize">200,52.8</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -721,7 +721,7 @@
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">130,216.4</av:Point>
                       <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">230,269.2 230,306.4</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">230,269.2 230,316.4</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:CopyFile ContinueOnError="{x:Null}" Destination="[str_TrimskjemaFilsti]" DisplayName="Copy Nytt trimskjema" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[str_TrimskjemaTEMPLATE]">
@@ -749,7 +749,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,166.4 300,196.4 230,196.4 230,216.4</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Many inits" sap:VirtualizedContainerService.HintSize="430.4,288.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign DisplayName="Many inits" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -797,7 +797,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_TrimskjemaFilsti]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">["trimskjema\"+ int_TrimskjemaNummer.ToString +"_.docx"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["trimskjema\trim for alle nav-huset vår 2022"+ int_TrimskjemaNummer.ToString +"_.docx"]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
