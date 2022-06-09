@@ -120,7 +120,7 @@
           <av:PointCollection x:Key="ConnectorLocation">230,369.2 230,399.2 325.841666666667,399.2 325.841666666667,409.2</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[int_counterWord &lt; 16]" DisplayName="Iterate through strava activities" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_4">
+      <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[int_counterWord &lt; 16]" DisplayName="Iterate through strava activities" sap:VirtualizedContainerService.HintSize="808.8,1236.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_4">
         <ui:InterruptibleDoWhile.Body>
           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="773.6,1069.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
             <Sequence.Variables>
@@ -446,13 +446,13 @@
                                         <av:PointCollection x:Key="ConnectorLocation">150,746.4 150,780</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Trim for alle NAV-huset vår 2022.docx - Word" sap:VirtualizedContainerService.HintSize="433.6,1620" sap2010:WorkflowViewState.IdRef="NApplicationCard_10" ScopeGuid="c9f1249a-e0ce-4d1d-97e8-9b12c120f9e2" Version="V2">
+                                    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Trim for alle NAV-huset vår 2022.docx - Word" sap:VirtualizedContainerService.HintSize="433.6,1619.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_10" ScopeGuid="c9f1249a-e0ce-4d1d-97e8-9b12c120f9e2" Version="V2">
                                       <uix:NApplicationCard.Body>
                                         <ActivityAction x:TypeArguments="x:Object">
                                           <ActivityAction.Argument>
                                             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                                           </ActivityAction.Argument>
-                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,1328.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,1328" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
