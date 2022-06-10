@@ -294,7 +294,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">330,472.8 385.841666666667,472.8 385.841666666667,519.2</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_stravaDataTable]" DisplayName="for each row in stravaDT" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_stravaDataTable]" DisplayName="for each row in stravaDT" sap:VirtualizedContainerService.HintSize="633.6,1789.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
@@ -569,7 +569,7 @@
                                           <InArgument x:TypeArguments="x:Int32">[int_counterWord+1]</InArgument>
                                         </Assign.Value>
                                       </Assign>
-                                      <If Condition="[int_counterWord &gt; 2]" sap:VirtualizedContainerService.HintSize="483.2,440" sap2010:WorkflowViewState.IdRef="If_3">
+                                      <If Condition="[int_counterWord &gt; 15]" sap:VirtualizedContainerService.HintSize="483.2,440" sap2010:WorkflowViewState.IdRef="If_3">
                                         <If.Then>
                                           <Sequence sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_47">
                                             <sap:WorkflowViewStateService.ViewState>
@@ -646,7 +646,7 @@
                                   <av:PointCollection x:Key="ConnectorLocation">390,330 360,330 360,312.8 330,312.8</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="nytt trimskjema - close word" sap:VirtualizedContainerService.HintSize="475.2,1038.4" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <Sequence DisplayName="nytt trimskjema - close word" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
