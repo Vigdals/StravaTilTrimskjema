@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="928.8,768" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sg="clr-namespace:System.Globalization;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2044.8,768" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sg="clr-namespace:System.Globalization;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="43">
+    <scg:List x:TypeArguments="x:String" Capacity="47">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,10 +44,14 @@
       <x:String>UiPath.Shared.ObjectLibrary</x:String>
       <x:String>UiPath.CV.Activities</x:String>
       <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -84,6 +88,8 @@
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -97,6 +103,8 @@
       <Variable x:TypeArguments="x:Boolean" Name="bool_2021" />
       <Variable x:TypeArguments="x:TimeSpan" Name="timespan_30min" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_stravaDataTable" />
+      <Variable x:TypeArguments="x:String" Name="CurrentRow" />
+      <Variable x:TypeArguments="x:Int32" Name="int_StravaDTcounter" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -110,9 +118,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID6</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID7">
+    <FlowStep x:Name="__ReferenceID6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,113.6</av:Point>
@@ -179,6 +187,14 @@
                 <InArgument x:TypeArguments="x:TimeSpan">00:30:00</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Int32">[int_StravaDTcounter]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Int32">1</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
         <sap:WorkflowViewStateService.ViewState>
@@ -240,7 +256,7 @@
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">130,286.4</av:Point>
                   <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">230,339.2 230,366.4</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">230,339.2 230,369.2</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:CopyFile ContinueOnError="{x:Null}" Destination="[str_TrimskjemaFilsti]" DisplayName="Copy Nytt trimskjema" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[str_TrimskjemaTEMPLATE]">
@@ -251,317 +267,267 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CopyFile>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID6">
+                <FlowStep x:Name="__ReferenceID5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">130,366.4</av:Point>
+                      <av:Point x:Key="ShapeLocation">130,369.2</av:Point>
                       <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">230,419.2 230,446.4</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">230,422 230,452 345.841666666667,452 345.841666666667,469.2</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_13" OpenMode="IfNotOpen" ScopeGuid="5eb70c63-03a7-4bb9-9606-f29d726cc8b1" Version="V2">
-                    <uix:NApplicationCard.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
+                  <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[str_TrimskjemaFilsti]" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+                    <p:WordApplicationScope.Body>
+                      <ActivityAction x:TypeArguments="ui:WordDocument">
                         <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                          <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,335.2" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="912.8,2624.8" sap2010:WorkflowViewState.IdRef="Sequence_53">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
-                          <uix:NKeyboardShortcuts DelayBetweenShortcuts="{x:Null}" ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="333.6,178.4" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_3" ScopeIdentifier="5eb70c63-03a7-4bb9-9606-f29d726cc8b1" Shortcuts="[d(hk)][d(ctrl)][k(end)][u(ctrl)][u(hk)]" Version="V1" />
-                        </Sequence>
-                      </ActivityAction>
-                    </uix:NApplicationCard.Body>
-                    <uix:NApplicationCard.TargetApp>
-                      <uix:TargetApp Area="-9, -9, 3458, 1408" Arguments="[str_TrimskjemaFilsti]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATCSURBVFhH7ZhtUFRlFMehaaYy3F1hXV7UACk1nZrJHCHyJacZULR4MdAyAjQNKhvTcewFmCyzSVCwaWqsSWukhsrlxQoBBZZlidDNEl8qx0aRtCLQGis/+OF0znn2Prss1+UuXPeD05n5DXcvc/f/4znnee4MQddT3RBgNFfwvIq+2nkfX4CAUtFf48ofsm5W/YIAgNk3CgXfZVR7OBBgdohQ8F0mtYcDAWaHCgXf9b/g1cBsrYL9+MBQqIeMBMzWJjhnZw9cnV+YubvOwwO7e+l4UA0bDpgdGnR7QXs1AnH5DmbiU0QbTFzVBrHEyjaIedIuWGGHaKYVbluO5LXChFwbMz7HBpOe70TRcyjapxroLywYV+AlhihisStdYsggsTy32PicFhj3BJLdAnc8ewCmvuCEaYVdyNERIQQ95Nxi7lUbIIZM8Fq1cS65qOxmiHq8GVe+Du5c3wHTXj6iGuoPLCjFvNrpLebdTveqoRgSiXKRy5ohdkUtTFnngKkvfa8a6g8s6NnO8r3dUFbbDfdv6JRyies7YVvNGSa5yCnF4td2wNaq01CKkFjksiaIeKwJYvKqYMpaOwp+pxrqD0LQY856+i4DVRnKiHba4JVPTvE9qvcbenjOaMWKK07yvbO9l1mMCH/0gEuwVT9Bz3Z+7viNQzt+uCjbWf/tH3yP6lj3JZ4zauen9l/5XmXreYhAsfClxH6IybXqK+g5Z8pq/fXPFTlndO1Zk1fZuZ3Hzlziz0Uf/cRi4Uv2g2VJI0TrLSg3ALYzudjJoVQJOGNJhYf4+usTF6VQxmuHccWa+JrqwQ3foFwjWLKQzAaIztFZcOB5ZpMrtry8C9bsOMHX7+07y1CV7PkZ0l8Vf8iff1+RYpbMerA8Uo+Ce3QWdMkp51m9U8xcqfW0nLPcrUfguXeP83X78QvcVqq6g78LORQbu3gfY07ZBZbFVohY2ig3z3BhQc+3AO/O3WJ3tmNbaYdSzVjtYJSqtJ3jn1s+OwVjFbmMOsacslNfQUWMdyeeZxmbDnO4UiQpNkEjXv/ruisqrbgTpYScOf0rMKchegsqxwbJKb/wrLqDvWLOshqgskWsnFJCDCGx1C/B/PAXELZAZ0HPt4ByntGcKVX44Y9yzla/3eW6C+A42u8WS0UxkntoLwp+oK8gf8Bjg94CynmWvvEQlOB8Efc+3SrnbHq+DbZUnmSyNztZTooRi2r1F5RirjnzPjbEBvCaM6WdihyKhS5EUmogbL7egspbwDVnA44NKeY1Zx5iYSS2sAblqiF0QbX+gvR6kqtGYlIOjw0S41XzmjO5am6xMfOrYEyyFcKS3kHBKh0FMxuqqZ1uscHtZLEB7SQxRIohSVYwzHoLRk9fB8bEN8A0ZxuY5m4fESyooUy3xKWCb9Jg1KQsuPWufDDMLATjrDcxoGxQoL9gtjbBkLsLwDfPQMg9a2D0jBfBeN8mMM0uxYDyQYH+gtnaBA0zi3BlfBBfDIaEjdjazWCcXYLtHfnqEZitTZBCh4JXjedOHzkCs7UJinZpQT1ouGC2VkH1L7jWYPb1ITgKh79Z7QuuJcbE11sw2yAUfNdNyGQkIYDEI5RJ2UNWMEL/io1AogIEZWFmUPB/G0TZjj5N0YUAAAAASUVORK5CYII=" InformativeScreenshot="6d8e143b1bc7559600ce41a885497200.png" IsExactTitleEnabled="True" Selector="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022*.docx - Word' /&gt;" />
-                    </uix:NApplicationCard.TargetApp>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </uix:NApplicationCard>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID5">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">130,446.4</av:Point>
-                          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">330,472.8 385.841666666667,472.8 385.841666666667,519.2</av:PointCollection>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_stravaDataTable]" DisplayName="for each row in stravaDT" sap:VirtualizedContainerService.HintSize="633.6,1789.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-                        <ui:ForEachRow.Body>
-                          <ActivityAction x:TypeArguments="sd:DataRow">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="600,1673.6" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: Trim for alle NAV-huset vår 2022.docx - Word" sap:VirtualizedContainerService.HintSize="558.4,1580.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_14" ScopeGuid="3d214a2e-8770-4a94-8d1f-6f985ea6a1d4" Version="V2">
-                                <uix:NApplicationCard.Body>
-                                  <ActivityAction x:TypeArguments="x:Object">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                                    </ActivityAction.Argument>
-                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,1289.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
-                                      <Sequence.Variables>
-                                        <Variable x:TypeArguments="x:String" Name="str_forklaring" />
-                                        <Variable x:TypeArguments="x:String" Name="str_dato" />
-                                        <Variable x:TypeArguments="x:String" Name="str_varigheit" />
-                                        <Variable x:TypeArguments="x:String" Name="str_lokasjon" />
-                                        <Variable x:TypeArguments="x:TimeSpan" Name="timespan_varigheit" />
-                                        <Variable x:TypeArguments="s:DateTime" Name="dateTime_dato" />
-                                        <Variable x:TypeArguments="x:String" Name="str_aktivitetsnamn" />
-                                      </Sequence.Variables>
+                          <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While wordCounter is less than 15" sap:VirtualizedContainerService.HintSize="871.2,2501.6" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                            <ui:InterruptibleDoWhile.Body>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="836,2334.4" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="str_forklaring" />
+                                  <Variable x:TypeArguments="x:String" Name="str_dato" />
+                                  <Variable x:TypeArguments="x:String" Name="str_varigheit" />
+                                  <Variable x:TypeArguments="x:String" Name="str_lokasjon" />
+                                  <Variable x:TypeArguments="x:TimeSpan" Name="timespan_varigheit" />
+                                  <Variable x:TypeArguments="s:DateTime" Name="dateTime_dato" />
+                                  <Variable x:TypeArguments="x:String" Name="str_aktivitetsnamn" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="794.4,226.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                  <ui:MultipleAssign.AssignOperations>
+                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[str_forklaring]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[dt_stravaDataTable.Rows(int_StravaDTcounter)(0).ToString]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[str_dato]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[dt_stravaDataTable.Rows(int_StravaDTcounter)(1).ToString]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[str_varigheit]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[dt_stravaDataTable.Rows(int_StravaDTcounter)(4).ToString]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[str_lokasjon]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">Sogndal</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[str_aktivitetsnamn]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[dt_stravaDataTable.Rows(int_StravaDTcounter)(2).ToString]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                    </scg:List>
+                                  </ui:MultipleAssign.AssignOperations>
+                                </ui:MultipleAssign>
+                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="794.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_18" Text="[&quot;Str_forklaring: &quot; + str_forklaring + vbNewLine +&#xD;&#xA;&quot;Str_dato: &quot; + str_dato + vbNewLine +&#xD;&#xA;&quot;Str_varigheit: &quot; + str_varigheit + vbNewLine +&#xD;&#xA;&quot;Str_lokasjon: &quot; + str_lokasjon + vbNewLine +&#xD;&#xA;&quot;Str_aktivitetsnamn: &quot; + str_aktivitetsnamn]" />
+                                <TryCatch DisplayName="TryCatch convert to dateTime" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <TryCatch.Try>
+                                    <Sequence DisplayName="Check datoformat" sap:VirtualizedContainerService.HintSize="304,258.4" sap2010:WorkflowViewState.IdRef="Sequence_66">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,226.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-                                        <ui:MultipleAssign.AssignOperations>
-                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_forklaring]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="x:String">[CurrentRow("Sport").ToString + " : " + CurrentRow("Title").ToString]</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_dato]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="x:String">[CurrentRow("Date").ToString]</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_varigheit]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="x:String">[CurrentRow("Time").ToString]</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_lokasjon]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="x:String">Sogndal</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_aktivitetsnamn]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="x:String">[CurrentRow("Title").ToString]</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                          </scg:List>
-                                        </ui:MultipleAssign.AssignOperations>
-                                      </ui:MultipleAssign>
-                                      <TryCatch DisplayName="TryCatch convert to dateTime" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_4">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <TryCatch.Try>
-                                          <Sequence DisplayName="Check datoformat" sap:VirtualizedContainerService.HintSize="304,258.4" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_43">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="s:DateTime">[dateTime_dato]</OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="s:DateTime">[convert.ToDateTime(str_dato.Substring(4, str_dato.length-4), ci)]</InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[dateTime_dato.ToString(ci) + &quot; og året er: &quot; + dateTime_dato.Year.ToString]" />
-                                          </Sequence>
-                                        </TryCatch.Try>
-                                        <TryCatch.Catches>
-                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_4">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ActivityAction x:TypeArguments="s:Exception">
-                                              <ActivityAction.Argument>
-                                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                              </ActivityAction.Argument>
-                                              <Sequence sap:VirtualizedContainerService.HintSize="375.2,390.4" sap2010:WorkflowViewState.IdRef="Sequence_41">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[&quot;Exception in convert to DateTime. Mitigating. Message were: &quot; + exception.Message.ToString]" />
-                                                <Assign sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_44">
-                                                  <Assign.To>
-                                                    <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
-                                                  </Assign.To>
-                                                  <Assign.Value>
-                                                    <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
-                                                  </Assign.Value>
-                                                </Assign>
-                                                <Assign sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_45">
-                                                  <Assign.To>
-                                                    <OutArgument x:TypeArguments="s:DateTime">[dateTime_dato]</OutArgument>
-                                                  </Assign.To>
-                                                  <Assign.Value>
-                                                    <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
-                                                  </Assign.Value>
-                                                </Assign>
-                                              </Sequence>
-                                            </ActivityAction>
-                                          </Catch>
-                                        </TryCatch.Catches>
-                                      </TryCatch>
-                                      <If Condition="[dateTime_dato.Year &gt; 2021]" DisplayName="If dato er 2021, avslutter" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_1">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <If.Else>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_44">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;DATO ER 2021! ---- AVSLUTTER! ---- &quot; + vbNewLine + &#xA;&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
-                                            <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_47">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="x:Boolean">[bool_2021]</OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                            <ui:Break sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
-                                      <Sequence DisplayName="convert Varigheit to TimeSpan" sap:VirtualizedContainerService.HintSize="483.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_38">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:IfElseIf DisplayName="Om varigheit er mindre enn 1t" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="IfElseIf_3">
-                                          <ui:IfElseIf.ConditionBlocks>
-                                            <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                                              <ui:IfElseIfBlock BlockType="If" Condition="[str_varigheit.Length &lt; 6]">
-                                                <ui:IfElseIfBlock.Then>
-                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_40">
-                                                      <Assign.To>
-                                                        <OutArgument x:TypeArguments="x:String">[str_varigheit]</OutArgument>
-                                                      </Assign.To>
-                                                      <Assign.Value>
-                                                        <InArgument x:TypeArguments="x:String">["00:" + str_varigheit]</InArgument>
-                                                      </Assign.Value>
-                                                    </Assign>
-                                                  </Sequence>
-                                                </ui:IfElseIfBlock.Then>
-                                              </ui:IfElseIfBlock>
-                                            </sc:BindingList>
-                                          </ui:IfElseIf.ConditionBlocks>
+                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_56">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="s:DateTime">[dateTime_dato]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="s:DateTime">[convert.ToDateTime(str_dato.Substring(4, str_dato.length-4), ci)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[dateTime_dato.ToString(ci) + &quot; og året er: &quot; + dateTime_dato.Year.ToString]" />
+                                    </Sequence>
+                                  </TryCatch.Try>
+                                  <TryCatch.Catches>
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ActivityAction x:TypeArguments="s:Exception">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                        </ActivityAction.Argument>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="375.2,390.4" sap2010:WorkflowViewState.IdRef="Sequence_67">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                        </ui:IfElseIf>
-                                        <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_41">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:TimeSpan">[timespan_varigheit]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:TimeSpan">[TimeSpan.Parse(str_varigheit)]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[&quot;Varigheit: &quot; + timespan_varigheit.ToString]" />
-                                      </Sequence>
-                                      <If Condition="[timespan_varigheit &gt; timespan_30min]" DisplayName="If varigheit er under 30 min, ikkje fyll ut saker" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_2">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <If.Then>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="375.2,1220.8" sap2010:WorkflowViewState.IdRef="Sequence_50">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
-                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Dato" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_17" ScopeIdentifier="3d214a2e-8770-4a94-8d1f-6f985ea6a1d4" Text="[dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)]" Version="V1">
-                                              <uix:NTypeInto.Target>
-                                                <uix:TargetAnchorable DesignTimeRectangle="465, 437, 81, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='1' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="bfd131c0-72f5-436c-a949-a09efd8cf443" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFUAAAAwCAYAAABgzDazAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACgSURBVHhe7dBBCsMwEARB/f/TSiwMka+O+lYNw7LXGvPbGOvoj3ZDqId6oF6PHd4tu4T1vt0Q6qGgBkENghoENQhqENQgqEFQg6AGQQ2CGgQ1CGoQ1CCoQVCDoAZBDYIaBDUIahDUIKhBUIOgBkENghoENQhqENQgqEFQg6AGQQ2CGgQ1CGoQ1CCoQVCDHqjXY4d3yy5hvW83hHqon+GcH4addNdsH5/qAAAAAElFTkSuQmCC" InformativeScreenshot="2cf17d0180bb40149274c80e04c9ea7e.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='TrimskjemaUtfyltRobot*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                                              </uix:NTypeInto.Target>
-                                            </uix:NTypeInto>
-                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Varigheit" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_18" ScopeIdentifier="3d214a2e-8770-4a94-8d1f-6f985ea6a1d4" Text="[timespan_varigheit.ToString]" Version="V1">
-                                              <uix:NTypeInto.Target>
-                                                <uix:TargetAnchorable DesignTimeRectangle="562, 437, 115, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='2' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="29c3d6fc-e9bd-4b77-ba7e-202628936958" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAwCAYAAAArZOVeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACiSURBVHhe7dHRCYAwEAXB9N901CCYlOAyC4/jvmfMuzHWUaDdEm6sA/d5LLpXeEnr/+2WcGPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMMduM9j0b3CS1r/b7eEG+uznPMCZmARmoO23zUAAAAASUVORK5CYII=" InformativeScreenshot="de1ef818d60c847b7c3094d3bfc9ae3c.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='TrimskjemaUtfyltRobot*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                                              </uix:NTypeInto.Target>
-                                            </uix:NTypeInto>
-                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Aktivitet" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_19" ScopeIdentifier="3d214a2e-8770-4a94-8d1f-6f985ea6a1d4" Text="[str_forklaring]" Version="V1">
-                                              <uix:NTypeInto.Target>
-                                                <uix:TargetAnchorable DesignTimeRectangle="678, 437, 265, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='3' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="b7300d26-9d83-4cb6-9145-8531f2e788ee" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQ0AAAAwCAYAAAALgS/PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADOSURBVHhe7dRRCoQwEAXB3P/S7hoEFQKx/6vgMcwFehx/Y8wDsPRshGgAW69onI+Z2edd5ZgFAVh5NkI0gC3RABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRAJJXNM7HzOzzrnLMggCsPBshGsDW3Yjj+AGvy6bygZkjvgAAAABJRU5ErkJggg==" InformativeScreenshot="7d3d49e895cc688181e11ca4f9cf8b03.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='TrimskjemaUtfyltRobot*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                                              </uix:NTypeInto.Target>
-                                            </uix:NTypeInto>
-                                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into lokasjon" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_20" ScopeIdentifier="3d214a2e-8770-4a94-8d1f-6f985ea6a1d4" Text="[str_lokasjon]" Version="V1">
-                                              <uix:NTypeInto.Target>
-                                                <uix:TargetAnchorable DesignTimeRectangle="953, 379, 130, 35" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='4' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="d9e087f8-48c3-47e2-bc5c-9f3fdb04f6a4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIYAAAAnCAYAAADKOTDaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACKSURBVHhe7dTbCcAgFAVB+2/aPECTwHaQGTjI/V8c8zTG/fBz7w6EwfYJ4zrM1hY/BpswSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDNInjOswW1v8GGzCID0dzHkANj1o0mUmkxoAAAAASUVORK5CYII=" InformativeScreenshot="a97d3561b9d8ee2bf6b4cebef2e21717.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                                              </uix:NTypeInto.Target>
-                                            </uix:NTypeInto>
-                                          </Sequence>
-                                        </If.Then>
-                                        <If.Else>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="375.2,187.2" sap2010:WorkflowViewState.IdRef="Sequence_46">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Varigheit er under 30 min, skipper denne inputten!&quot; + vbNewLine + &#xA;&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
-                                      <Assign DisplayName="Incement WordCounter" sap:VirtualizedContainerService.HintSize="483.2,61.6" sap2010:WorkflowViewState.IdRef="Assign_46">
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Warn" Message="[&quot;Exception in convert to DateTime. Mitigating. Message were: &quot; + exception.Message.ToString]" />
+                                          <Assign sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_57">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_58">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:DateTime">[dateTime_dato]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </Catch>
+                                  </TryCatch.Catches>
+                                </TryCatch>
+                                <If Condition="[dateTime_dato.Year &gt; 2021]" DisplayName="If dato er 2021, avslutter" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="If_7">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Warn" Message="[&quot;DATO ER 2021! ---- AVSLUTTER! ---- &quot; + vbNewLine + &#xA;&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
+                                      <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_59">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">[bool_2021]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:Break sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Break_6" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <Sequence DisplayName="convert Varigheit to TimeSpan" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:IfElseIf DisplayName="Om varigheit er mindre enn 1t" sap:VirtualizedContainerService.HintSize="450.4,348" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
+                                    <ui:IfElseIf.ConditionBlocks>
+                                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                                        <ui:IfElseIfBlock BlockType="If" Condition="[str_varigheit.Length &lt; 6]">
+                                          <ui:IfElseIfBlock.Then>
+                                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_60">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:String">[str_varigheit]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:String">["00:" + str_varigheit]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </Sequence>
+                                          </ui:IfElseIfBlock.Then>
+                                        </ui:IfElseIfBlock>
+                                      </sc:BindingList>
+                                    </ui:IfElseIf.ConditionBlocks>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:IfElseIf>
+                                  <Assign sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="Assign_61">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:TimeSpan">[timespan_varigheit]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:TimeSpan">[TimeSpan.Parse(str_varigheit)]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="[&quot;Varigheit: &quot; + timespan_varigheit.ToString]" />
+                                </Sequence>
+                                <If Condition="[timespan_varigheit &gt; timespan_30min]" DisplayName="If varigheit er under 30 min, ikkje fyll ut saker" sap:VirtualizedContainerService.HintSize="794.4,1478.4" sap2010:WorkflowViewState.IdRef="If_8">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,1319.2" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Dato" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_25" InScope="[WordDocumentScope]" ScopeIdentifier="WordDocumentScope" Text="[dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)]" Version="V1">
+                                        <uix:NTypeInto.Target>
+                                          <uix:TargetAnchorable DesignTimeRectangle="465, 437, 81, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='1' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="bfd131c0-72f5-436c-a949-a09efd8cf443" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFUAAAAwCAYAAABgzDazAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACgSURBVHhe7dBBCsMwEARB/f/TSiwMka+O+lYNw7LXGvPbGOvoj3ZDqId6oF6PHd4tu4T1vt0Q6qGgBkENghoENQhqENQgqEFQg6AGQQ2CGgQ1CGoQ1CCoQVCDoAZBDYIaBDUIahDUIKhBUIOgBkENghoENQhqENQgqEFQg6AGQQ2CGgQ1CGoQ1CCoQVCDHqjXY4d3yy5hvW83hHqon+GcH4addNdsH5/qAAAAAElFTkSuQmCC" InformativeScreenshot="2cf17d0180bb40149274c80e04c9ea7e.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                                        </uix:NTypeInto.Target>
+                                      </uix:NTypeInto>
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Varigheit" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_26" InScope="[WordDocumentScope]" ScopeIdentifier="WordDocumentScope" Text="[timespan_varigheit.ToString]" Version="V1">
+                                        <uix:NTypeInto.Target>
+                                          <uix:TargetAnchorable DesignTimeRectangle="562, 437, 115, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='2' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="29c3d6fc-e9bd-4b77-ba7e-202628936958" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAwCAYAAAArZOVeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACiSURBVHhe7dHRCYAwEAXB9N901CCYlOAyC4/jvmfMuzHWUaDdEm6sA/d5LLpXeEnr/+2WcGPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMPBDQc3HNxwcMMduM9j0b3CS1r/b7eEG+uznPMCZmARmoO23zUAAAAASUVORK5CYII=" InformativeScreenshot="de1ef818d60c847b7c3094d3bfc9ae3c.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                                        </uix:NTypeInto.Target>
+                                      </uix:NTypeInto>
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into Aktivitet" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_27" InScope="[WordDocumentScope]" ScopeIdentifier="WordDocumentScope" Text="[str_forklaring]" Version="V1">
+                                        <uix:NTypeInto.Target>
+                                          <uix:TargetAnchorable DesignTimeRectangle="678, 437, 265, 44" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='3' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="b7300d26-9d83-4cb6-9145-8531f2e788ee" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQ0AAAAwCAYAAAALgS/PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADOSURBVHhe7dRRCoQwEAXB3P/S7hoEFQKx/6vgMcwFehx/Y8wDsPRshGgAW69onI+Z2edd5ZgFAVh5NkI0gC3RABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRABLRAJJXNM7HzOzzrnLMggCsPBshGsDW3Yjj+AGvy6bygZkjvgAAAABJRU5ErkJggg==" InformativeScreenshot="7d3d49e895cc688181e11ca4f9cf8b03.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr*.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                                        </uix:NTypeInto.Target>
+                                      </uix:NTypeInto>
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into lokasjon" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_28" InScope="[WordDocumentScope]" ScopeIdentifier="WordDocumentScope" Text="[str_lokasjon]" Version="V1">
+                                        <uix:NTypeInto.Target>
+                                          <uix:TargetAnchorable DesignTimeRectangle="953, 379, 130, 35" FriendlyName="'element'" FullSelectorArgument="[String.Format(&quot;&lt;uia role='tabell' /&gt;&lt;uia role='element' tableCol='4' tableRow='{0}' /&gt;&quot;, int_counterWord)]" FuzzySelectorArgument="&lt;uia role='tabell' /&gt;&lt;uia role='element' automationid='' /&gt;" Guid="d9e087f8-48c3-47e2-bc5c-9f3fdb04f6a4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIYAAAAnCAYAAADKOTDaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACKSURBVHhe7dTbCcAgFAVB+2/aPECTwHaQGTjI/V8c8zTG/fBz7w6EwfYJ4zrM1hY/BpswSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDJIwSMIgCYMkDNInjOswW1v8GGzCID0dzHkANj1o0mUmkxoAAAAASUVORK5CYII=" InformativeScreenshot="a97d3561b9d8ee2bf6b4cebef2e21717.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                                        </uix:NTypeInto.Target>
+                                      </uix:NTypeInto>
+                                      <Assign DisplayName="Incement WordCounter" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_62">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:Int32">[int_counterWord]</OutArgument>
                                         </Assign.To>
@@ -569,162 +535,205 @@
                                           <InArgument x:TypeArguments="x:Int32">[int_counterWord+1]</InArgument>
                                         </Assign.Value>
                                       </Assign>
-                                      <If Condition="[int_counterWord &gt; 15]" sap:VirtualizedContainerService.HintSize="483.2,440" sap2010:WorkflowViewState.IdRef="If_3">
-                                        <If.Then>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_47">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn" Message="[&quot;15 aktiviteter nådd. Lager nytt trimskjema!&quot;]" />
-                                            <ui:Break sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Break_3" />
-                                          </Sequence>
-                                        </If.Then>
-                                        <If.Else>
-                                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_48">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
                                     </Sequence>
-                                  </ActivityAction>
-                                </uix:NApplicationCard.Body>
-                                <uix:NApplicationCard.TargetApp>
-                                  <uix:TargetApp Area="-9, -9, 3458, 1408" Arguments="[str_TrimskjemaFilsti]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATCSURBVFhH7ZhtUFRlFMehaaYy3F1hXV7UACk1nZrJHCHyJacZULR4MdAyAjQNKhvTcewFmCyzSVCwaWqsSWukhsrlxQoBBZZlidDNEl8qx0aRtCLQGis/+OF0znn2Prss1+UuXPeD05n5DXcvc/f/4znnee4MQddT3RBgNFfwvIq+2nkfX4CAUtFf48ofsm5W/YIAgNk3CgXfZVR7OBBgdohQ8F0mtYcDAWaHCgXf9b/g1cBsrYL9+MBQqIeMBMzWJjhnZw9cnV+YubvOwwO7e+l4UA0bDpgdGnR7QXs1AnH5DmbiU0QbTFzVBrHEyjaIedIuWGGHaKYVbluO5LXChFwbMz7HBpOe70TRcyjapxroLywYV+AlhihisStdYsggsTy32PicFhj3BJLdAnc8ewCmvuCEaYVdyNERIQQ95Nxi7lUbIIZM8Fq1cS65qOxmiHq8GVe+Du5c3wHTXj6iGuoPLCjFvNrpLebdTveqoRgSiXKRy5ohdkUtTFnngKkvfa8a6g8s6NnO8r3dUFbbDfdv6JRyies7YVvNGSa5yCnF4td2wNaq01CKkFjksiaIeKwJYvKqYMpaOwp+pxrqD0LQY856+i4DVRnKiHba4JVPTvE9qvcbenjOaMWKK07yvbO9l1mMCH/0gEuwVT9Bz3Z+7viNQzt+uCjbWf/tH3yP6lj3JZ4zauen9l/5XmXreYhAsfClxH6IybXqK+g5Z8pq/fXPFTlndO1Zk1fZuZ3Hzlziz0Uf/cRi4Uv2g2VJI0TrLSg3ALYzudjJoVQJOGNJhYf4+usTF6VQxmuHccWa+JrqwQ3foFwjWLKQzAaIztFZcOB5ZpMrtry8C9bsOMHX7+07y1CV7PkZ0l8Vf8iff1+RYpbMerA8Uo+Ce3QWdMkp51m9U8xcqfW0nLPcrUfguXeP83X78QvcVqq6g78LORQbu3gfY07ZBZbFVohY2ig3z3BhQc+3AO/O3WJ3tmNbaYdSzVjtYJSqtJ3jn1s+OwVjFbmMOsacslNfQUWMdyeeZxmbDnO4UiQpNkEjXv/ruisqrbgTpYScOf0rMKchegsqxwbJKb/wrLqDvWLOshqgskWsnFJCDCGx1C/B/PAXELZAZ0HPt4ByntGcKVX44Y9yzla/3eW6C+A42u8WS0UxkntoLwp+oK8gf8Bjg94CynmWvvEQlOB8Efc+3SrnbHq+DbZUnmSyNztZTooRi2r1F5RirjnzPjbEBvCaM6WdihyKhS5EUmogbL7egspbwDVnA44NKeY1Zx5iYSS2sAblqiF0QbX+gvR6kqtGYlIOjw0S41XzmjO5am6xMfOrYEyyFcKS3kHBKh0FMxuqqZ1uscHtZLEB7SQxRIohSVYwzHoLRk9fB8bEN8A0ZxuY5m4fESyooUy3xKWCb9Jg1KQsuPWufDDMLATjrDcxoGxQoL9gtjbBkLsLwDfPQMg9a2D0jBfBeN8mMM0uxYDyQYH+gtnaBA0zi3BlfBBfDIaEjdjazWCcXYLtHfnqEZitTZBCh4JXjedOHzkCs7UJinZpQT1ouGC2VkH1L7jWYPb1ITgKh79Z7QuuJcbE11sw2yAUfNdNyGQkIYDEI5RJ2UNWMEL/io1AogIEZWFmUPB/G0TZjj5N0YUAAAAASUVORK5CYII=" InformativeScreenshot="12d08a0ea3dc8f868086e1df63f7dd5f.png" IsExactTitleEnabled="True" Selector="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022*.docx - Word' /&gt;" />
-                                </uix:NApplicationCard.TargetApp>
-                              </uix:NApplicationCard>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ForEachRow.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:ForEachRow>
-                      <FlowStep.Next>
-                        <FlowDecision x:Name="__ReferenceID1" Condition="[bool_2021]" DisplayName="2021?" sap:VirtualizedContainerService.HintSize="70.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Varigheit er under 30 min, skipper denne inputten!&quot; + vbNewLine + &#xA;&quot;Int counter i Word er: &quot; + int_counterWord.ToString + vbNewLine +&#xA;&quot;Dato: &quot; + dateTime_dato.ToString(&quot;dd.MM.yyyy&quot;,ci)+ vbNewLine +&#xA;&quot;Varigheit: &quot; + str_varigheit + vbNewLine +&#xA;&quot;Forklaring: &quot; + str_forklaring + vbNewLine]" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <Assign DisplayName="increment int_StravaDTcounter" sap:VirtualizedContainerService.HintSize="794.4,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[int_StravaDTcounter]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[int_StravaDTcounter+1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ui:InterruptibleDoWhile.Body>
+                            <ui:InterruptibleDoWhile.Condition>
+                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="int_counterWord &lt; 16" />
+                            </ui:InterruptibleDoWhile.Condition>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InterruptibleDoWhile>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="871.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Warn" Message="[&quot;15 aktiviteter nådd. Lager nytt trimskjema!&quot;]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </p:WordApplicationScope.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </p:WordApplicationScope>
+                  <FlowStep.Next>
+                    <FlowDecision x:Name="__ReferenceID1" Condition="[bool_2021]" DisplayName="2021?" sap:VirtualizedContainerService.HintSize="70.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">310.641666666667,469.2</av:Point>
+                          <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+                          <av:PointCollection x:Key="FalseConnector">381.041666666667,512.8 490,512.8 490,364.4</av:PointCollection>
+                          <x:String x:Key="TrueLabel">2021</x:String>
+                          <av:PointCollection x:Key="TrueConnector">310.641666666667,512.8 180,512.8 180,553.6</av:PointCollection>
+                          <x:String x:Key="FalseLabel">2022</x:String>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <FlowDecision.True>
+                        <FlowStep x:Name="__ReferenceID2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <av:Point x:Key="ShapeLocation">350.641666666667,519.2</av:Point>
-                              <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
-                              <av:PointCollection x:Key="FalseConnector">421.041666666667,562.8 490,562.8 490,364.4</av:PointCollection>
-                              <x:String x:Key="TrueLabel">2021</x:String>
-                              <av:PointCollection x:Key="TrueConnector">350.641666666667,562.8 180,562.8 180,613.6</av:PointCollection>
-                              <x:String x:Key="FalseLabel">2022</x:String>
+                              <av:Point x:Key="ShapeLocation">80,553.6</av:Point>
+                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <FlowDecision.True>
-                            <FlowStep x:Name="__ReferenceID2">
+                          <ui:LogMessage DisplayName="Process Done!" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;DONE&quot;]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                        </FlowStep>
+                      </FlowDecision.True>
+                      <FlowDecision.False>
+                        <FlowStep x:Name="__ReferenceID3">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">390,295.6</av:Point>
+                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">390,330 360,330 360,312.8 330,312.8</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="nytt trimskjema - close word" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,145.6" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application: trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word" sap:VirtualizedContainerService.HintSize="350.4,52.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_16" ScopeGuid="79b097e1-19bd-427a-a51f-7b6bedd3cf0e" Version="V2">
+                                    <uix:NApplicationCard.Body>
+                                      <ActivityAction x:TypeArguments="x:Object">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476.8,147.2" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,250.4" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <uix:NClick ClickType="Single" DisplayName="Click 'Lukk'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="79b097e1-19bd-427a-a51f-7b6bedd3cf0e" Version="V1">
+                                                  <uix:NClick.Target>
+                                                    <uix:TargetAnchorable DesignTimeRectangle="2522, 1, 57, 43" FriendlyName="'Lukk'" FullSelectorArgument="&lt;uia cls='MsoCommandBar' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Lukk' /&gt;" FuzzySelectorArgument="&lt;uia cls='MsoCommandBar' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Lukk' role='Knapp' automationid='' check:fulltext='Lukk' /&gt;" Guid="60a634e3-d1a9-4e46-a2a1-1b49b68f6e9f" ImageBase64="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" InformativeScreenshot="1c80c94e88d02bbb0c79229901ea41c0.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                                                  </uix:NClick.Target>
+                                                </uix:NClick>
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:CommentOut>
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </uix:NApplicationCard.Body>
+                                    <uix:NApplicationCard.TargetApp>
+                                      <uix:TargetApp Area="64, 64, 2580, 1017" Arguments="[str_TrimskjemaFilsti]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATCSURBVFhH7ZhtUFRlFMehaaYy3F1hXV7UACk1nZrJHCHyJacZULR4MdAyAjQNKhvTcewFmCyzSVCwaWqsSWukhsrlxQoBBZZlidDNEl8qx0aRtCLQGis/+OF0znn2Prss1+UuXPeD05n5DXcvc/f/4znnee4MQddT3RBgNFfwvIq+2nkfX4CAUtFf48ofsm5W/YIAgNk3CgXfZVR7OBBgdohQ8F0mtYcDAWaHCgXf9b/g1cBsrYL9+MBQqIeMBMzWJjhnZw9cnV+YubvOwwO7e+l4UA0bDpgdGnR7QXs1AnH5DmbiU0QbTFzVBrHEyjaIedIuWGGHaKYVbluO5LXChFwbMz7HBpOe70TRcyjapxroLywYV+AlhihisStdYsggsTy32PicFhj3BJLdAnc8ewCmvuCEaYVdyNERIQQ95Nxi7lUbIIZM8Fq1cS65qOxmiHq8GVe+Du5c3wHTXj6iGuoPLCjFvNrpLebdTveqoRgSiXKRy5ohdkUtTFnngKkvfa8a6g8s6NnO8r3dUFbbDfdv6JRyies7YVvNGSa5yCnF4td2wNaq01CKkFjksiaIeKwJYvKqYMpaOwp+pxrqD0LQY856+i4DVRnKiHba4JVPTvE9qvcbenjOaMWKK07yvbO9l1mMCH/0gEuwVT9Bz3Z+7viNQzt+uCjbWf/tH3yP6lj3JZ4zauen9l/5XmXreYhAsfClxH6IybXqK+g5Z8pq/fXPFTlndO1Zk1fZuZ3Hzlziz0Uf/cRi4Uv2g2VJI0TrLSg3ALYzudjJoVQJOGNJhYf4+usTF6VQxmuHccWa+JrqwQ3foFwjWLKQzAaIztFZcOB5ZpMrtry8C9bsOMHX7+07y1CV7PkZ0l8Vf8iff1+RYpbMerA8Uo+Ce3QWdMkp51m9U8xcqfW0nLPcrUfguXeP83X78QvcVqq6g78LORQbu3gfY07ZBZbFVohY2ig3z3BhQc+3AO/O3WJ3tmNbaYdSzVjtYJSqtJ3jn1s+OwVjFbmMOsacslNfQUWMdyeeZxmbDnO4UiQpNkEjXv/ruisqrbgTpYScOf0rMKchegsqxwbJKb/wrLqDvWLOshqgskWsnFJCDCGx1C/B/PAXELZAZ0HPt4ByntGcKVX44Y9yzla/3eW6C+A42u8WS0UxkntoLwp+oK8gf8Bjg94CynmWvvEQlOB8Efc+3SrnbHq+DbZUnmSyNztZTooRi2r1F5RirjnzPjbEBvCaM6WdihyKhS5EUmogbL7egspbwDVnA44NKeY1Zx5iYSS2sAblqiF0QbX+gvR6kqtGYlIOjw0S41XzmjO5am6xMfOrYEyyFcKS3kHBKh0FMxuqqZ1uscHtZLEB7SQxRIohSVYwzHoLRk9fB8bEN8A0ZxuY5m4fESyooUy3xKWCb9Jg1KQsuPWufDDMLATjrDcxoGxQoL9gtjbBkLsLwDfPQMg9a2D0jBfBeN8mMM0uxYDyQYH+gtnaBA0zi3BlfBBfDIaEjdjazWCcXYLtHfnqEZitTZBCh4JXjedOHzkCs7UJinZpQT1ouGC2VkH1L7jWYPb1ITgKh79Z7QuuJcbE11sw2yAUfNdNyGQkIYDEI5RJ2UNWMEL/io1AogIEZWFmUPB/G0TZjj5N0YUAAAAASUVORK5CYII=" InformativeScreenshot="aa0195bdc9fde2a6cbe96299b424ffc2.png" IsExactTitleEnabled="True" Selector="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022*.docx - Word' /&gt;" />
+                                    </uix:NApplicationCard.TargetApp>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NApplicationCard>
+                                </Sequence>
+                              </ui:CommentOut.Body>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">80,613.6</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Process Done!" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;DONE&quot;]">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:LogMessage>
-                            </FlowStep>
-                          </FlowDecision.True>
-                          <FlowDecision.False>
-                            <FlowStep x:Name="__ReferenceID3">
+                            </ui:CommentOut>
+                            <Assign DisplayName="Reset Word counter" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[int_counterWord]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                              </Assign.Value>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">390,295.6</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">390,330 360,330 360,312.8 330,312.8</av:PointCollection>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="nytt trimskjema - close word" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word" sap:VirtualizedContainerService.HintSize="433.6,543.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_16" ScopeGuid="79b097e1-19bd-427a-a51f-7b6bedd3cf0e" Version="V2">
-                                  <uix:NApplicationCard.Body>
-                                    <ActivityAction x:TypeArguments="x:Object">
-                                      <ActivityAction.Argument>
-                                        <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                                      </ActivityAction.Argument>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,252" sap2010:WorkflowViewState.IdRef="Sequence_49">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <uix:NClick ClickType="Single" DisplayName="Click 'Lukk'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="79b097e1-19bd-427a-a51f-7b6bedd3cf0e" Version="V1">
-                                          <uix:NClick.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="2522, 1, 57, 43" FriendlyName="'Lukk'" FullSelectorArgument="&lt;uia cls='MsoCommandBar' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Lukk' /&gt;" FuzzySelectorArgument="&lt;uia cls='MsoCommandBar' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Lukk' role='Knapp' automationid='' check:fulltext='Lukk' /&gt;" Guid="60a634e3-d1a9-4e46-a2a1-1b49b68f6e9f" ImageBase64="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" InformativeScreenshot="1c80c94e88d02bbb0c79229901ea41c0.png" ScopeSelectorArgument="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022_RobotNr_1_.docx - Word' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                                          </uix:NClick.Target>
-                                        </uix:NClick>
-                                      </Sequence>
-                                    </ActivityAction>
-                                  </uix:NApplicationCard.Body>
-                                  <uix:NApplicationCard.TargetApp>
-                                    <uix:TargetApp Area="64, 64, 2580, 1017" Arguments="[str_TrimskjemaFilsti]" FilePath="C:\Program Files\Microsoft Office\root\Office16\winword.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATCSURBVFhH7ZhtUFRlFMehaaYy3F1hXV7UACk1nZrJHCHyJacZULR4MdAyAjQNKhvTcewFmCyzSVCwaWqsSWukhsrlxQoBBZZlidDNEl8qx0aRtCLQGis/+OF0znn2Prss1+UuXPeD05n5DXcvc/f/4znnee4MQddT3RBgNFfwvIq+2nkfX4CAUtFf48ofsm5W/YIAgNk3CgXfZVR7OBBgdohQ8F0mtYcDAWaHCgXf9b/g1cBsrYL9+MBQqIeMBMzWJjhnZw9cnV+YubvOwwO7e+l4UA0bDpgdGnR7QXs1AnH5DmbiU0QbTFzVBrHEyjaIedIuWGGHaKYVbluO5LXChFwbMz7HBpOe70TRcyjapxroLywYV+AlhihisStdYsggsTy32PicFhj3BJLdAnc8ewCmvuCEaYVdyNERIQQ95Nxi7lUbIIZM8Fq1cS65qOxmiHq8GVe+Du5c3wHTXj6iGuoPLCjFvNrpLebdTveqoRgSiXKRy5ohdkUtTFnngKkvfa8a6g8s6NnO8r3dUFbbDfdv6JRyies7YVvNGSa5yCnF4td2wNaq01CKkFjksiaIeKwJYvKqYMpaOwp+pxrqD0LQY856+i4DVRnKiHba4JVPTvE9qvcbenjOaMWKK07yvbO9l1mMCH/0gEuwVT9Bz3Z+7viNQzt+uCjbWf/tH3yP6lj3JZ4zauen9l/5XmXreYhAsfClxH6IybXqK+g5Z8pq/fXPFTlndO1Zk1fZuZ3Hzlziz0Uf/cRi4Uv2g2VJI0TrLSg3ALYzudjJoVQJOGNJhYf4+usTF6VQxmuHccWa+JrqwQ3foFwjWLKQzAaIztFZcOB5ZpMrtry8C9bsOMHX7+07y1CV7PkZ0l8Vf8iff1+RYpbMerA8Uo+Ce3QWdMkp51m9U8xcqfW0nLPcrUfguXeP83X78QvcVqq6g78LORQbu3gfY07ZBZbFVohY2ig3z3BhQc+3AO/O3WJ3tmNbaYdSzVjtYJSqtJ3jn1s+OwVjFbmMOsacslNfQUWMdyeeZxmbDnO4UiQpNkEjXv/ruisqrbgTpYScOf0rMKchegsqxwbJKb/wrLqDvWLOshqgskWsnFJCDCGx1C/B/PAXELZAZ0HPt4ByntGcKVX44Y9yzla/3eW6C+A42u8WS0UxkntoLwp+oK8gf8Bjg94CynmWvvEQlOB8Efc+3SrnbHq+DbZUnmSyNztZTooRi2r1F5RirjnzPjbEBvCaM6WdihyKhS5EUmogbL7egspbwDVnA44NKeY1Zx5iYSS2sAblqiF0QbX+gvR6kqtGYlIOjw0S41XzmjO5am6xMfOrYEyyFcKS3kHBKh0FMxuqqZ1uscHtZLEB7SQxRIohSVYwzHoLRk9fB8bEN8A0ZxuY5m4fESyooUy3xKWCb9Jg1KQsuPWufDDMLATjrDcxoGxQoL9gtjbBkLsLwDfPQMg9a2D0jBfBeN8mMM0uxYDyQYH+gtnaBA0zi3BlfBBfDIaEjdjazWCcXYLtHfnqEZitTZBCh4JXjedOHzkCs7UJinZpQT1ouGC2VkH1L7jWYPb1ITgKh79Z7QuuJcbE11sw2yAUfNdNyGQkIYDEI5RJ2UNWMEL/io1AogIEZWFmUPB/G0TZjj5N0YUAAAAASUVORK5CYII=" InformativeScreenshot="aa0195bdc9fde2a6cbe96299b424ffc2.png" IsExactTitleEnabled="True" Selector="&lt;wnd app='winword.exe' cls='OpusApp' title='trim for alle nav-huset vår 2022*.docx - Word' /&gt;" />
-                                  </uix:NApplicationCard.TargetApp>
-                                </uix:NApplicationCard>
-                                <Assign DisplayName="Reset Word counter" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_34">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[int_counterWord]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                                <Assign DisplayName="Increment trimskjema" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_36">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[int_TrimskjemaNummer]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">[int_TrimskjemaNummer+1]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                                <Assign DisplayName="Set new path for trimskjema" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_35">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[str_TrimskjemaFilsti]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">["trimskjema\trim for alle nav-huset vår 2022_RobotNr_"+ int_TrimskjemaNummer.ToString +"_.docx"]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="433.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;str_TrimskjemaFilsti verdi er: &quot; + str_TrimskjemaFilsti]" />
-                              </Sequence>
-                              <FlowStep.Next>
-                                <x:Reference>__ReferenceID0</x:Reference>
-                              </FlowStep.Next>
-                            </FlowStep>
-                          </FlowDecision.False>
-                        </FlowDecision>
-                      </FlowStep.Next>
-                    </FlowStep>
+                            </Assign>
+                            <Assign DisplayName="Increment trimskjema" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[int_TrimskjemaNummer]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[int_TrimskjemaNummer+1]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                            <Assign DisplayName="Set new path for trimskjema" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[str_TrimskjemaFilsti]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">["trimskjema\trim for alle nav-huset vår 2022_RobotNr_"+ int_TrimskjemaNummer.ToString +"_.docx"]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;str_TrimskjemaFilsti verdi er: &quot; + str_TrimskjemaFilsti]" />
+                          </Sequence>
+                          <FlowStep.Next>
+                            <x:Reference>__ReferenceID0</x:Reference>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowDecision.False>
+                    </FlowDecision>
                   </FlowStep.Next>
                 </FlowStep>
               </FlowStep.Next>
@@ -737,8 +746,7 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
-    <x:Reference>__ReferenceID5</x:Reference>
-    <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
   </Flowchart>
 </Activity>
